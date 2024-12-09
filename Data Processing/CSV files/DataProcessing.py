@@ -67,9 +67,9 @@ def save_to_csv_combined(image_ids, bboxes, labels, file_name):
     df.to_csv(file_name, index=False)
 
 # Save train, validation, and test data to CSV files
-save_to_csv_combined(train_image_ids, train_bboxes, train_labels, 'CSV files/train_data_combined.csv')
-save_to_csv_combined(valid_image_ids, valid_bboxes, valid_labels, 'CSV files/valid_data_combined.csv')
-save_to_csv_combined(test_image_ids, test_bboxes, test_labels, 'CSV files/test_data_combined.csv')
+save_to_csv_combined(train_image_ids, train_bboxes, train_labels, 'train_data.csv')
+save_to_csv_combined(valid_image_ids, valid_bboxes, valid_labels, 'valid_data.csv')
+save_to_csv_combined(test_image_ids, test_bboxes, test_labels, 'test_data.csv')
 
 print("Data has been saved to combined CSV files.")
 
