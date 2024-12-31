@@ -1,5 +1,5 @@
 import tensorflow as tf
-from model1 import parse_tfrecord_fn
+from Model1.model1 import parse_tfrecord_fn
 # Load the saved model
 model = tf.keras.models.load_model('saved_model.keras')
 
@@ -9,7 +9,8 @@ def load_tfrecord(tfrecord_file):
     dataset = dataset.map(parse_tfrecord_fn)
     return dataset
 
-test_dataset = load_tfrecord('./Data Processing/TFRecords/test.tfrecord').batch(16).prefetch(tf.data.experimental.AUTOTUNE)
+test_dataset = load_tfrecord(
+    '../Data Processing/TFRecords/test.tfrecord').batch(16).prefetch(tf.data.experimental.AUTOTUNE)
 
 # Evaluate the model on the test data
 test_loss, test_metrics = model.evaluate(test_dataset)

@@ -1,5 +1,5 @@
 import tensorflow as tf
-from model1 import parse_tfrecord_fn, model
+from Model1.model1 import parse_tfrecord_fn, model
 # Load the trained model
 
 
