@@ -4,32 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07ebda53-a4cc-46a4-adb6-149c3438c17d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Model2/data_pipeline.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Model2/model2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Model2/train.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SSD/label_map.pbtxt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SSD/ssd_config.config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="07ebda53-a4cc-46a4-adb6-149c3438c17d" name="Changes" comment="model evaluation with test data attemption">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data Processing/TFRecords/tfToModelPipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/Data Processing/TFRecords/tfToModelPipeline.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Model1/model1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Model1/model_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/research/lstm_object_detection/eval.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/research/lstm_object_detection/eval.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/research/lstm_object_detection/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/research/lstm_object_detection/train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/research/lstm_object_detection/utils/config_util_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/research/lstm_object_detection/utils/config_util_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/research/object_detection/export_tflite_graph_tf2.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/research/object_detection/export_tflite_graph_tf2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/research/object_detection/exporter_lib_tf2_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/research/object_detection/exporter_lib_tf2_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/research/object_detection/exporter_lib_v2.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/research/object_detection/exporter_lib_v2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/research/object_detection/exporter_tf1_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/research/object_detection/exporter_tf1_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/research/object_detection/g3doc/running_on_mobile_tensorflowlite.md" beforeDir="false" afterPath="$PROJECT_DIR$/models/research/object_detection/g3doc/running_on_mobile_tensorflowlite.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/research/object_detection/g3doc/running_on_mobile_tf2.md" beforeDir="false" afterPath="$PROJECT_DIR$/models/research/object_detection/g3doc/running_on_mobile_tf2.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/research/object_detection/legacy/eval.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/research/object_detection/legacy/eval.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/research/object_detection/legacy/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/research/object_detection/legacy/train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/research/object_detection/model_main_tf2.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/research/object_detection/model_main_tf2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/research/object_detection/utils/config_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/research/object_detection/utils/config_util.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/research/object_detection/utils/config_util_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/research/object_detection/utils/config_util_test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,16 +24,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.download.executor": "Run",
-    "Python.model1.executor": "Run",
-    "Python.model_test.executor": "Run",
-    "Python.object_detection_demo.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.download.executor&quot;: &quot;Run&quot;,
+    &quot;Python.model1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.model_test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.object_detection_demo.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\shira\PycharmProjects\TreeTails\Model1" />

@@ -12,12 +12,12 @@ def create_tfrecord_example(image_path, bbox_list, label_list):
     image = Image.open(image_path)
     width, height = image.size
 
-    # Serialize bounding boxes and labels
-    xmins = [bbox[0] / width for bbox in bbox_list]
-    ymins = [bbox[1] / height for bbox in bbox_list]
-    xmaxs = [bbox[2] / width for bbox in bbox_list]
-    ymaxs = [bbox[3] / height for bbox in bbox_list]
-    classes = label_list
+    # Serialize bounding boxes and labels (including missing parts)
+    xmins = [bbox[0] / width if bbox != [0, 0, 0, 0] else 0.0 for bbox in bbox_list]
+    ymins = [bbox[1] / height if bbox != [0, 0, 0, 0] else 0.0 for bbox in bbox_list]
+    xmaxs = [bbox[2] / width if bbox != [0, 0, 0, 0] else 0.0 for bbox in bbox_list]
+    ymaxs = [bbox[3] / height if bbox != [0, 0, 0, 0] else 0.0 for bbox in bbox_list]
+    classes = label_list  # Include all labels, including 0 for missing parts
 
     # Create a TFRecord Example
     feature = {
@@ -32,6 +32,7 @@ def create_tfrecord_example(image_path, bbox_list, label_list):
     }
     return tf.train.Example(features=tf.train.Features(feature=feature))
 
+
 # Function to write TFRecord file
 def write_tfrecord(csv_file, image_folder, output_path):
     df = pd.read_csv(csv_file)
@@ -44,9 +45,9 @@ def write_tfrecord(csv_file, image_folder, output_path):
             writer.write(tf_example.SerializeToString())
 
 # Paths
-train_csv = 'CSV files\\train_data.csv'
-valid_csv = 'CSV files\\valid_data.csv'
-test_csv = 'CSV files\\test_data.csv'
+train_csv = 'C:\\Users\\User\PycharmProjects\TreeTailsModel\Data Processing\CSV files\\train_data.csv'
+valid_csv = 'C:\\Users\\User\PycharmProjects\TreeTailsModel\Data Processing\CSV files\\valid_data.csv'
+test_csv = 'C:\\Users\\User\PycharmProjects\TreeTailsModel\Data Processing\CSV files\\test_data.csv'
 
 train_folder = 'C:\\Users\\User\Downloads\Tree-Parts.v6-best-model.tensorflow\\train'
 valid_folder = 'C:\\Users\\User\Downloads\Tree-Parts.v6-best-model.tensorflow\\valid'

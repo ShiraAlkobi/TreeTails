@@ -1,6 +1,7 @@
 import os
 import pandas as pd
 import numpy as np
+import json
 
 # Load the dataset from Excel file
 def load_dataset(file_path):
@@ -16,18 +17,18 @@ def preprocess_data(df):
     image_grouped = df.groupby('filename')
 
     for image_id, group in image_grouped:
-        # Initialize lists for bounding boxes and class labels
-        bboxes = []
-        class_labels = []
+        # Initialize placeholders for bounding boxes and class labels
+        parts = {'Root': [0, [0, 0, 0, 0]], 'Trunk': [0, [0, 0, 0, 0]], 'Canopy': [0, [0, 0, 0, 0]]}
 
         for _, row in group.iterrows():
-            # Collect bounding box data: xmin, ymin, xmax, ymax
+            # Update the bounding box and class label for the detected part
             bbox = [row['xmin'], row['ymin'], row['xmax'], row['ymax']]
-            bboxes.append(bbox)
+            class_label = {'Root': 1, 'Trunk': 2, 'Canopy': 3}[row['class']]
+            parts[row['class']] = [class_label, bbox]
 
-            # Convert class to an integer (e.g., Root=0, Trunk=1, Canopy=2)
-            class_label = {'Root': 0, 'Trunk': 1, 'Canopy': 2}[row['class']]
-            class_labels.append(class_label)
+        # Extract and store the bounding boxes and class labels in order
+        bboxes = [parts[part][1] for part in ['Root', 'Trunk', 'Canopy']]
+        class_labels = [parts[part][0] for part in ['Root', 'Trunk', 'Canopy']]
 
         # Store the filename as the image_id
         image_ids.append(image_id)
@@ -51,8 +52,6 @@ valid_image_ids, valid_bboxes, valid_labels = preprocess_data(valid_df)
 test_image_ids, test_bboxes, test_labels = preprocess_data(test_df)
 
 # Save processed data to CSV files
-import json
-
 def save_to_csv_combined(image_ids, bboxes, labels, file_name):
     # Flatten the bounding boxes and labels into one row per image
     data = []
@@ -72,4 +71,3 @@ save_to_csv_combined(valid_image_ids, valid_bboxes, valid_labels, 'valid_data.cs
 save_to_csv_combined(test_image_ids, test_bboxes, test_labels, 'test_data.csv')
 
 print("Data has been saved to combined CSV files.")
-
