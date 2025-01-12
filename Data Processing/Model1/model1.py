@@ -85,7 +85,7 @@ def create_model():
     x = layers.GlobalAveragePooling2D()(base_model.output)
 
     # Predict bounding boxes: Output shape (3 parts × 4 coordinates)
-    bbox_output = layers.Dense(12, activation='sigmoid', name='bounding_boxes')(x)  # 3 parts × [xmin, ymin, xmax, ymax]
+    bbox_output = layers.Dense(12, activation='softmax', name='bounding_boxes')(x)  # 3 parts × [xmin, ymin, xmax, ymax]
     bbox_output = layers.Reshape((3, 4), name='bbox_output_reshape')(bbox_output)  # Reshape to (3, 4)
 
     # Predict class labels: Output shape (3 parts × num_classes)
@@ -116,11 +116,6 @@ def create_model():
 
 model = create_model()
 
-# for images, targets in train_dataset.take(1):
-#     y_true = targets['class_output_reshape']  # Assuming this is the reshaped label tensor
-#     y_pred = model(images, training=True)    # Get predictions from the model
-#     loss = masked_sparse_categorical_crossentropy(y_true, y_pred[1])
-#     print("Loss:", loss.numpy())
 
 
 model.fit(train_dataset, epochs=10, validation_data=valid_dataset)
@@ -365,3 +360,63 @@ model.save('./saved_model.keras')
 #         targets['bbox_output_reshape'].numpy(),
 #         targets['class_output_reshape'].numpy()
 #     )
+
+@tf.keras.utils.register_keras_serializable()
+def iou_metric(y_true, y_pred):
+    # Extract coordinates
+    xmin_true, ymin_true, xmax_true, ymax_true = tf.split(y_true, 4, axis=-1)
+    xmin_pred, ymin_pred, xmax_pred, ymax_pred = tf.split(y_pred, 4, axis=-1)
+
+    # Calculate the intersection
+    intersect_xmin = tf.maximum(xmin_true, xmin_pred)
+    intersect_ymin = tf.maximum(ymin_true, ymin_pred)
+    intersect_xmax = tf.minimum(xmax_true, xmax_pred)
+    intersect_ymax = tf.minimum(ymax_true, ymax_pred)
+    intersect_area = tf.maximum(0.0, intersect_xmax - intersect_xmin) * tf.maximum(0.0,
+                                                                                   intersect_ymax - intersect_ymin)
+
+    # Calculate the union
+    true_area = (xmax_true - xmin_true) * (ymax_true - ymin_true)
+    pred_area = (xmax_pred - xmin_pred) * (ymax_pred - ymin_pred)
+    union_area = true_area + pred_area - intersect_area
+
+    # Compute IoU
+    iou = intersect_area / tf.maximum(union_area, 1e-6)
+    return tf.reduce_mean(iou)
+# 2. Build Model
+def create_model():
+    base_model = tf.keras.applications.MobileNetV2(input_shape=(224, 224, 3), include_top=False)
+    x = layers.GlobalAveragePooling2D()(base_model.output)
+
+    # Predict bounding boxes: Output shape (3 parts × 4 coordinates)
+    bbox_output = layers.Dense(12, activation=None, name='bounding_boxes')(x)  # 3 parts × [xmin, ymin, xmax, ymax]
+    bbox_output = layers.Reshape((3, 4), name='bbox_output_reshape')(bbox_output)  # Reshape to (3, 4)
+
+    # Predict class labels: Output shape (3 parts × num_classes)
+    num_classes = 4  # Classes: canopy, trunk, root
+    class_output = layers.Dense(3 * num_classes, activation='softmax', name='class_labels')(x)
+    class_output = layers.Reshape((3, num_classes), name='class_output_reshape')(class_output)  # Reshape to (3, num_classes)
+
+    model = models.Model(inputs=base_model.input, outputs=[bbox_output, class_output])
+    # model.compile(
+    #     optimizer='adam',
+    #     loss=masked_sparse_categorical_crossentropy,
+    #     metrics=['accuracy']
+    # )
+
+
+    model.compile(
+        optimizer='adam',
+        loss={
+            'bbox_output_reshape': 'mse',
+            'class_output_reshape': 'sparse_categorical_crossentropy'
+        },
+        loss_weights={
+            'bbox_output_reshape': 0.8,
+            'class_output_reshape': 0.2
+        },
+        metrics={
+            'bbox_output_reshape': ['mae', iou_metric],  # Add IoU for bounding boxes
+            'class_output_reshape': 'accuracy'
+        }
+    )

@@ -1,0 +1,8 @@
+train: "C:/Users/User/Desktop/tree_images_and_annotations/train/images"
+val: "C:/Users/User/Desktop/tree_images_and_annotations/valid/images"
+test: "C:/Users/User/Desktop/tree_images_and_annotations/test/images"
+
+names:
+  0: root
+  1: trunk
+  2: canopy
