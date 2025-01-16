@@ -4,28 +4,53 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07ebda53-a4cc-46a4-adb6-149c3438c17d" name="Changes" comment="model evaluation with test data attemption">
+    <list default="true" id="07ebda53-a4cc-46a4-adb6-149c3438c17d" name="Changes" comment="Trying to use object detection premade model - SSD">
+      <change afterPath="$PROJECT_DIR$/backend/app.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/research/ssd_mobilenet_v2_coco_2018_03_29/variables/variables.data-00000-of-00001" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/research/ssd_mobilenet_v2_coco_2018_03_29/variables/variables.index" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/TreeTailsModel.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/TreeTailsModel.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SSD/checkpoint/model.ckpt.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SSD/checkpoint/model.ckpt.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SSD/checkpoint/model.ckpt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SSD/ssd_config.config" beforeDir="false" afterPath="$PROJECT_DIR$/SSD/ssd_config.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/research/ssd_mobilenet_v2_coco_2018_03_29/saved_model/variables/variables.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/research/ssd_mobilenet_v2_coco_2018_03_29/saved_model/variables/variables.index" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="2pvx11NA3OClI6Iz0RGMC4Mztdn" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;Python.download.executor&quot;: &quot;Run&quot;,
     &quot;Python.model1.executor&quot;: &quot;Run&quot;,
     &quot;Python.model_test.executor&quot;: &quot;Run&quot;,
@@ -36,6 +61,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\shira\PycharmProjects\TreeTails" />
+      <recent name="C:\Users\shira\PycharmProjects\TreeTails\frontend\frontend\src" />
       <recent name="C:\Users\shira\PycharmProjects\TreeTails\Model1" />
     </key>
   </component>
