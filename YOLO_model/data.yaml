@@ -6,3 +6,9 @@ names:
   0: root
   1: trunk
   2: canopy
+# In the YOLO training configuration file
+class_weights: [3.0, 1.0, 1.0]  # Increase weight for the root class
+lr0: 0.001  # Initial learning rate
+lrf: 0.01   # Final learning rate
+batch_size: 16
+

@@ -5,12 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07ebda53-a4cc-46a4-adb6-149c3438c17d" name="Changes" comment="model evaluation with test data attemption">
+      <change afterPath="$PROJECT_DIR$/YOLO_model/analyze_ouput.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/YOLO_model/augmentation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/YOLO_model/duplicate_roots.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/YOLO_model/indicator.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YOLO_model/data.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/YOLO_model/data.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YOLO_model/visualize.py" beforeDir="false" afterPath="$PROJECT_DIR$/YOLO_model/visualize.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YOLO_model/visualize_predict_vs_actual.py" beforeDir="false" afterPath="$PROJECT_DIR$/YOLO_model/visualize_predict_vs_actual.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YOLO_model/yolo_model_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/YOLO_model/yolo_model_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YOLO_model/yolo_model_training.py" beforeDir="false" afterPath="$PROJECT_DIR$/YOLO_model/yolo_model_training.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -24,16 +42,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.download.executor&quot;: &quot;Run&quot;,
-    &quot;Python.model1.executor&quot;: &quot;Run&quot;,
-    &quot;Python.model_test.executor&quot;: &quot;Run&quot;,
-    &quot;Python.object_detection_demo.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.analyze_ouput.executor": "Run",
+    "Python.download.executor": "Run",
+    "Python.model1.executor": "Run",
+    "Python.model_test.executor": "Run",
+    "Python.object_detection_demo.executor": "Run",
+    "Python.visualize.executor": "Run",
+    "Python.visualize_predict_vs_actual.executor": "Run",
+    "Python.yolo_model_test.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\shira\PycharmProjects\TreeTails\Model1" />
