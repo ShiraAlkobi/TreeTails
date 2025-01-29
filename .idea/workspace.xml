@@ -5,19 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07ebda53-a4cc-46a4-adb6-149c3438c17d" name="Changes" comment="Trying to use object detection premade model - SSD">
-      <change afterPath="$PROJECT_DIR$/backend/app.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/research/ssd_mobilenet_v2_coco_2018_03_29/variables/variables.data-00000-of-00001" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/research/ssd_mobilenet_v2_coco_2018_03_29/variables/variables.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/TreeTailsModel.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/TreeTailsModel.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/YOLO_model/app.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/YOLO_model/test_server.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Content.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SSD/checkpoint/model.ckpt.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SSD/checkpoint/model.ckpt.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SSD/checkpoint/model.ckpt.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SSD/ssd_config.config" beforeDir="false" afterPath="$PROJECT_DIR$/SSD/ssd_config.config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/research/ssd_mobilenet_v2_coco_2018_03_29/saved_model/variables/variables.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/research/ssd_mobilenet_v2_coco_2018_03_29/saved_model/variables/variables.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/YOLO_model/analyze_ouput.py" beforeDir="false" afterPath="$PROJECT_DIR$/YOLO_model/analyze_ouput.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YOLO_model/indicator.json" beforeDir="false" afterPath="$PROJECT_DIR$/YOLO_model/indicator.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YOLO_model/visualize.py" beforeDir="false" afterPath="$PROJECT_DIR$/YOLO_model/visualize.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ImageUploader.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ImageUploader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/OutputBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/OutputBox.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,17 +47,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Python.download.executor&quot;: &quot;Run&quot;,
-    &quot;Python.model1.executor&quot;: &quot;Run&quot;,
-    &quot;Python.model_test.executor&quot;: &quot;Run&quot;,
-    &quot;Python.object_detection_demo.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Python.app.executor": "Run",
+    "Python.download.executor": "Run",
+    "Python.model1.executor": "Run",
+    "Python.model_test.executor": "Run",
+    "Python.object_detection_demo.executor": "Run",
+    "Python.visualize.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\shira\PycharmProjects\TreeTails" />
@@ -83,5 +84,16 @@
       <updated>1733660132096</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

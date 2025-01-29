@@ -1,13 +1,14 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Header from "./components/Header";
+import Content from "./components/Content";
 import ImageUploader from "./components/ImageUploader";
 import OutputBox from "./components/OutputBox";
 import UseSteps from "./components/UseSteps";
 import "./styles/Home.css";
 
 
-const descriptionText = `כל אחד צומח בדרך משלו – גלה את העץ שמספר את הסיפור שלך`;
+const descriptionText = "כל אחד צומח בדרך משלו – גלה את העץ שמספר את הסיפור שלך";
 
 const Home = () => {
     const [isHidden, setIsHidden] = useState(false);
@@ -53,21 +54,21 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      
+
       <Header />
-      
+
       {/* <div className="shape shape1"></div>
       <div className="shape shape2"></div> */}
-      
-  
+
+
       <div className="image-header-container">
         <div className="image-header">
           <h2>
             יש לך שורשים חזקים או שאתה יותר ברוח החופשית?
-          </h2>          
+          </h2>
         </div>
       </div>
-      
+
 
       <div className="image-description">
         <h3>
@@ -82,15 +83,12 @@ const Home = () => {
           </button>
         </div>
       )}
-      
+
       <UseSteps />
 
-      <div className="content">
-        <ImageUploader />
-        <OutputBox />
-      </div>
+    <Content />
 
-      
+
 
     <div className="bottom-banner"/>
     <footer className="footer">
