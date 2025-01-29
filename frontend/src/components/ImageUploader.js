@@ -2,24 +2,21 @@ import { useState } from "react";
 import binIcon from '../images/bin.png';
 import treeUploadIcon from '../images/treeUploading.png';
 
-const UploadSection = () => {
-    const [image, setImage] = useState(null);
+const UploadSection = ({ setImage, sendForAnalysis }) => {
+    const [imagePreview, setImagePreview] = useState(null); // Store preview image URL
 
     const handleImageUpload = (event) => {
         const file = event.target.files[0];
         if (file) {
             const imageUrl = URL.createObjectURL(file);
-            setImage(imageUrl);
+            setImagePreview(imageUrl);
+            setImage(file); // Pass actual file to Content.js for backend processing
         }
     };
 
     const removeImage = () => {
-        setImage(null);
-    };
-
-    const sendForAnalysis = () => {
-        console.log("Image sent for analysis:", image);
-        // This function will later be connected to the backend
+        setImagePreview(null);
+        setImage(null); // Clear the image in Content.js
     };
 
     return (
@@ -31,21 +28,21 @@ const UploadSection = () => {
             </label>
 
             {/* Remove Image Button (Only appears when an image is uploaded) */}
-            {image && (
+            {imagePreview && (
                 <button className="remove-icon-button" onClick={removeImage}>
                     <img src={binIcon} alt="Remove" className="remove-button-icon"/>
                 </button>
-                )}
+            )}
 
             {/* Image Preview / Placeholder */}
             <div className="image-preview">
-                {image ? (
-                    <img src={image} alt="Uploaded" className="uploaded-image" />
+                {imagePreview ? (
+                    <img src={imagePreview} alt="Uploaded" className="uploaded-image" />
                 ) : (
                     <div className="placeholder-container">
                         <img src={treeUploadIcon} alt="Upload" className="upload-icon"/>
                         <p className="placeholder-text">!קדימה... בואו נתחיל</p>
-            </div>
+                    </div>
                 )}
             </div>
 

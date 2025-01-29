@@ -9,6 +9,7 @@ import json
 # Open and read the JSON file
 with open('indicator.json', 'r', encoding="utf-8") as file:
     indicator = json.load(file)
+
 def run_yolo_on_image(image_path):
     """
     Run YOLOv8 on a real image and return the parsed output.
