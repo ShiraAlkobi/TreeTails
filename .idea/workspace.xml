@@ -4,9 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07ebda53-a4cc-46a4-adb6-149c3438c17d" name="Changes" comment="creating the basic web page for the project">
-      <change beforePath="$PROJECT_DIR$/frontend/src/Home.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Home.js" afterDir="false" />
+    <list default="true" id="07ebda53-a4cc-46a4-adb6-149c3438c17d" name="Changes" comment="Trying to use object detection premade model - SSD">
+      <change afterPath="$PROJECT_DIR$/backend/app.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/research/ssd_mobilenet_v2_coco_2018_03_29/variables/variables.data-00000-of-00001" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/research/ssd_mobilenet_v2_coco_2018_03_29/variables/variables.index" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/TreeTailsModel.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/TreeTailsModel.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SSD/checkpoint/model.ckpt.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SSD/checkpoint/model.ckpt.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SSD/checkpoint/model.ckpt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SSD/ssd_config.config" beforeDir="false" afterPath="$PROJECT_DIR$/SSD/ssd_config.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/research/ssd_mobilenet_v2_coco_2018_03_29/saved_model/variables/variables.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/research/ssd_mobilenet_v2_coco_2018_03_29/saved_model/variables/variables.index" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,19 +82,6 @@
       <option name="presentableId" value="Default" />
       <updated>1733660132096</updated>
     </task>
-    <task id="LOCAL-00001" summary="creating the basic web page for the project">
-      <option name="closed" value="true" />
-      <created>1737016558620</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1737016558620</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="creating the basic web page for the project" />
-    <option name="LAST_COMMIT_MESSAGE" value="creating the basic web page for the project" />
   </component>
 </project>

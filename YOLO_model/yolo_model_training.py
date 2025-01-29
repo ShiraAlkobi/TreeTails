@@ -13,3 +13,6 @@ model.train(
     name='yolov8_training',    # Experiment name
     device='cpu'                  # Set device (0 for GPU, 'cpu' for CPU)
 )
+
+
+

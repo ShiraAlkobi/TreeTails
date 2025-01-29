@@ -7,7 +7,7 @@ from ultralytics import YOLO
 # Paths
 test_images_dir = "C:\\Users\\User\Desktop\\tree_images_and_annotations\\test\images"    # Update with your test images path
 test_annotations_dir = "C:\\Users\\User\Desktop\\tree_images_and_annotations\\test\labels"   # Ground truth annotations directory
-model_path = "C:\\Users\\User\PycharmProjects\TreeTailsModel\YOLO_model\\tree_features\yolov8_training5\weights\\best.pt"  # Path to the trained YOLO model
+model_path = "C:\\Users\\User\PycharmProjects\TreeTailsModel\YOLO_model\\tree_features\yolov8_training15\weights\\best.pt"  # Path to the trained YOLO model
 
 # Class names (update based on your dataset)
 class_names = {0: "root", 1: "trunk", 2: "canopy"}
@@ -41,7 +41,7 @@ def parse_annotation_file(file_path, img_width, img_height):
     return boxes, labels
 
 # Visualize a few images
-annotation_files = os.listdir(test_annotations_dir)[:10]  # Use the first 5 annotation files
+annotation_files = os.listdir(test_annotations_dir)[:15]  # Use the first 5 annotation files
 
 for annotation_file in annotation_files:
     # Find the corresponding image
