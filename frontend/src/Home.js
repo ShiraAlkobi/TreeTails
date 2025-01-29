@@ -1,31 +1,103 @@
-import React, { useState } from 'react';
-import './Home.css';
+import React from "react";
+import { useState, useEffect } from "react";
+import Header from "./components/Header";
+import ImageUploader from "./components/ImageUploader";
+import OutputBox from "./components/OutputBox";
+import UseSteps from "./components/UseSteps";
+import "./styles/Home.css";
+
+
+const descriptionText = `כל אחד צומח בדרך משלו – גלה את העץ שמספר את הסיפור שלך`;
 
 const Home = () => {
-    const [image, setImage] = useState(null);
+    const [isHidden, setIsHidden] = useState(false);
 
-    const handleImageUpload = (event) => {
-        const file = event.target.files[0];
-        if (file) {
-            const imageUrl = URL.createObjectURL(file);
-            setImage(imageUrl);
+    useEffect(() => {
+        const handleScroll = () => {
+            const contentSection = document.querySelector(".content");
+            if (!contentSection) return;
+
+            const contentTop = contentSection.getBoundingClientRect().top;
+            setIsHidden(contentTop <= window.innerHeight * 0.8); // Hide when 80% of content is visible
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    const scrollToSection = () => {
+        const targetSection = document.querySelector(".content");
+        if (targetSection) {
+            targetSection.scrollIntoView({ behavior: "smooth" });
         }
     };
 
-    return (
-        <div className="container">
-            <h1>🌿 Welcome to TreeTails! 🌈</h1>
-            <div className="upload-section">
-                <label className="upload-btn">
-                    Upload an Image 📸
-                    <input type="file" accept="image/*" onChange={handleImageUpload} />
-                </label>
-            </div>
-            <div className="output-section">
-                {image ? <img src={image} alt="Uploaded Preview" className="preview" /> : <p>No image uploaded yet.</p>}
-            </div>
+
+    const [isStepsVisible, setIsStepsVisible] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const stepsSection = document.querySelector(".steps-container");
+            if (!stepsSection) return;
+
+            const sectionTop = stepsSection.getBoundingClientRect().top;
+            if (sectionTop < window.innerHeight * 0.8) {
+                setIsStepsVisible(true);
+            }
+        };
+
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+
+  return (
+    <div className="home-container">
+      
+      <Header />
+      
+      {/* <div className="shape shape1"></div>
+      <div className="shape shape2"></div> */}
+      
+  
+      <div className="image-header-container">
+        <div className="image-header">
+          <h2>
+            יש לך שורשים חזקים או שאתה יותר ברוח החופשית?
+          </h2>          
         </div>
-    );
+      </div>
+      
+
+      <div className="image-description">
+        <h3>
+            {descriptionText}
+        </h3>
+      </div>
+
+      {!isHidden && (
+        <div className="start-button" onClick={scrollToSection}>
+          <button>
+            ?שנקפוץ למודל הקסם שלנו
+          </button>
+        </div>
+      )}
+      
+      <UseSteps />
+
+      <div className="content">
+        <ImageUploader />
+        <OutputBox />
+      </div>
+
+      
+
+    <div className="bottom-banner"/>
+    <footer className="footer">
+        <p>© 2024 Tree Tails כל הזכויות שמורות</p>
+      </footer>
+    </div>
+  );
 };
 
 export default Home;
