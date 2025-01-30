@@ -80,7 +80,7 @@ def analyze_tree_proportions(features, image_width, image_height, indicator):
     thresholds = indicator['tree_proportions']['relative_to_image']
     if tree_area_ratio < thresholds["small_threshold"]:
         analysis.append({
-            "trait": "חוסר ביטחון",
+            "trait": "ביטחון עצמי",
             "description": thresholds["interpretation"]["small"],
             "indicator": "הפרופורציה בין העץ המצויר לשאר הדף קטנה יחסית"
         })
@@ -89,6 +89,39 @@ def analyze_tree_proportions(features, image_width, image_height, indicator):
             "trait": "ביטחון עצמי",
             "description": thresholds["interpretation"]["large"],
             "indicator": "הפרופורציה בין העץ המצויר לשאר הדף גדולה יחסית "
+        })
+
+    # Trunk-to-canopy ratio analysis
+    trunk_height = trunk_bbox[3] - trunk_bbox[1]
+    canopy_height = canopy_bbox[3] - canopy_bbox[1]
+    trunk_canopy_ratio = trunk_height / canopy_height
+
+    trunk_thresholds = indicator['tree_proportions']['features_relative_to_each_other']['trunk_canopy_ratio']
+    if trunk_canopy_ratio < trunk_thresholds["thin_trunk_threshold"]:
+        analysis.append({
+            "trait": "אופי גמיש",
+            "description": trunk_thresholds["interpretation"]["thin_trunk"],
+            "indicator": "היחס בין הגזע לחופה מעיד על גמישות"
+        })
+    elif trunk_canopy_ratio > trunk_thresholds["thick_trunk_threshold"]:
+        analysis.append({
+            "trait": "יציבות וביטחון",
+            "description": trunk_thresholds["interpretation"]["thick_trunk"],
+            "indicator": "היחס בין הגזע לחופה מעיד על יציבות"
+        })
+    # Root presence analysis
+    root_thresholds = indicator['tree_proportions']['features_relative_to_each_other']['root_presence']
+    if "root" not in features:
+        analysis.append({
+            "trait": "שלב חיפוש",
+            "description": root_thresholds["interpretation"]["absent"],
+            "indicator": "השורשים חסרים בציור"
+        })
+    else:
+        analysis.append({
+            "trait": "חיבור לערכים",
+            "description": root_thresholds["interpretation"]["present"],
+            "indicator": "השורשים נוכחים בציור"
         })
 
     return analysis
@@ -119,33 +152,34 @@ def analyze_feature_proportions(features, indicator):
         thresholds = indicator['tree_proportions']['features_relative_to_each_other']['trunk_canopy_ratio']
         if trunk_width < canopy_width * thresholds["thin_trunk_threshold"]:
             analysis.append({
-                "trait": "חוסר כוח פנימי",
+                "trait": "כוח פנימי",
                 "description": thresholds["interpretation"]["thin_trunk"],
-                "indicator": "גודל הגזע אל מול גודל החופה "
+                "indicator": "הגזע דק יחסית לחופה"
             })
         elif trunk_width > canopy_width * thresholds["thick_trunk_threshold"]:
             analysis.append({
                 "trait": "מיקוד יציב",
                 "description": thresholds["interpretation"]["thick_trunk"],
-                "indicator": f"trunk_width > canopy_width * {thresholds['thick_trunk_threshold']}"
+                "indicator": "הגזע רחב יחסית לחופה"
             })
 
+    # Root presence analysis
+    root_thresholds = indicator['tree_proportions']['features_relative_to_each_other']['root_presence']
     if "root" in features:
-        thresholds = indicator['tree_proportions']['features_relative_to_each_other']['root_presence']
         analysis.append({
             "trait": "נוכחות שורשים",
-            "description": thresholds["interpretation"]["present"],
-            "indicator": "root_present"
+            "description": root_thresholds["interpretation"]["present"],
+            "indicator": "נוכחות שורשים בציור"
         })
     else:
-        thresholds = indicator['tree_proportions']['features_relative_to_each_other']['root_presence']
         analysis.append({
             "trait": "חסר שורשים",
-            "description": thresholds["interpretation"]["absent"],
-            "indicator": "root_absent"
+            "description": root_thresholds["interpretation"]["absent"],
+            "indicator": "חסרים שורשים בציור"
         })
 
     return analysis
+
 
 
 def analyze_tree_location(features, image_width, image_height, indicator):
@@ -180,21 +214,22 @@ def analyze_tree_location(features, image_width, image_height, indicator):
     # Analyze horizontal position
     if canopy_center_x < horizontal_thresholds["left_threshold"]:
         analysis.append({
-            "trait": "ממוקד בעבר",
+            "trait": "התמקדות בעבר",
             "description": horizontal_thresholds["interpretation"]["left"],
             "indicator": f"canopy_center_x < {horizontal_thresholds['left_threshold']}"
         })
     elif canopy_center_x > horizontal_thresholds["right_threshold"]:
         analysis.append({
-            "trait": "ממוקד בעתיד",
+            "trait": "התמקדות בעתיד",
             "description": horizontal_thresholds["interpretation"]["right"],
             "indicator": f"canopy_center_x > {horizontal_thresholds['right_threshold']}"
         })
-    else:
+    elif (horizontal_thresholds["center_1_threshold"] <= canopy_center_x and
+                horizontal_thresholds["center_2_threshold"] >= canopy_center_x):
         analysis.append({
             "trait": "תפיסה מאוזנת",
             "description": horizontal_thresholds["interpretation"]["center"],
-            "indicator": f"{horizontal_thresholds['left_threshold']} <= canopy_center_x <= {horizontal_thresholds['right_threshold']}"
+            "indicator": f"{horizontal_thresholds['center_1_threshold']} <= canopy_center_x <= {horizontal_thresholds['center_2_threshold']}"
         })
 
     # Analyze vertical position
@@ -210,14 +245,16 @@ def analyze_tree_location(features, image_width, image_height, indicator):
             "description": vertical_thresholds["interpretation"]["high"],
             "indicator": f"canopy_center_y > {vertical_thresholds['high_threshold']}"
         })
-    else:
+    elif (vertical_thresholds["center_1_threshold"] <= canopy_center_y and
+                vertical_thresholds["center_2_threshold"] >= canopy_center_y):
         analysis.append({
             "trait": "יציבות רגשית",
             "description": vertical_thresholds["interpretation"]["center"],
-            "indicator": f"{vertical_thresholds['low_threshold']} <= canopy_center_y <= {vertical_thresholds['high_threshold']}"
+            "indicator": f"{vertical_thresholds['center_1_threshold']} <= canopy_center_y <= {vertical_thresholds['center_2_threshold']}"
         })
 
     return analysis
+
 
 
 def analyze_tree_shapes(features, indicator):
@@ -233,6 +270,7 @@ def analyze_tree_shapes(features, indicator):
     """
     analysis = []
 
+    # Analyze canopy shape
     if "canopy" in features and "shape" in features['canopy']:
         shape = features['canopy']['shape']
         if shape in indicator['canopy']['shape']:
@@ -241,7 +279,20 @@ def analyze_tree_shapes(features, indicator):
                 "description": indicator['canopy']['shape'][shape],
                 "indicator": f"canopy_shape = {shape}"
             })
+        # else:
+        #     analysis.append({
+        #         "trait": "צורת כתר לא מוכרת",
+        #         "description": "צורת הכתר לא זוהתה במאגר הנתונים.",
+        #         "indicator": f"canopy_shape = {shape} (לא מוכר)"
+        #     })
+    # else:
+        # analysis.append({
+        #     "trait": "חסר כתר",
+        #     "description": "לא ניתן לנתח את צורת הכתר כי הוא חסר.",
+        #     "indicator": "missing_canopy_shape"
+        # })
 
+    # Analyze trunk shape
     if "trunk" in features and "shape" in features['trunk']:
         shape = features['trunk']['shape']
         if shape in indicator['trunk']['shape']:
@@ -250,7 +301,20 @@ def analyze_tree_shapes(features, indicator):
                 "description": indicator['trunk']['shape'][shape],
                 "indicator": f"trunk_shape = {shape}"
             })
+        # else:
+        #     analysis.append({
+        #         "trait": "צורת גזע לא מוכרת",
+        #         "description": "צורת הגזע לא זוהתה במאגר הנתונים.",
+        #         "indicator": f"trunk_shape = {shape} (לא מוכר)"
+        #     })
+    # else:
+        # analysis.append({
+        #     "trait": "חסר גזע",
+        #     "description": "לא ניתן לנתח את צורת הגזע כי הוא חסר.",
+        #     "indicator": "missing_trunk_shape"
+        # })
 
+    # Analyze root depth
     if "root" in features and "depth" in features['root']:
         root_depth = features['root']['depth']
         thresholds = indicator['roots']['depth']
@@ -266,6 +330,67 @@ def analyze_tree_shapes(features, indicator):
                 "description": thresholds["interpretation"]["deep"],
                 "indicator": f"root_depth > {thresholds['deep_threshold']}"
             })
+        else:
+            analysis.append({
+                "trait": "שורשים בעומק בינוני",
+                "description": "העומק של השורשים מתאים לאמצע הסקאלה.",
+                "indicator": f"shallow_threshold <= root_depth <= deep_threshold"
+            })
+    # else:
+    #     analysis.append({
+    #         "trait": "חסרי שורשים",
+    #         "description": "לא ניתן לנתח את עומק השורשים כי הם חסרים.",
+    #         "indicator": "missing_root_depth"
+    #     })
+
+    return analysis
+
+
+
+def analyze_tree_size_individual(features, image_width, image_height, indicator):
+    analysis = []
+
+    # if "canopy" not in features:
+    #     analysis.append({
+    #         "trait": "חסר חופה",
+    #         "description": "לא ניתן לנתח את גודל החופה כי היא חסרה.",
+    #         "indicator": "missing_canopy"
+    #     })
+    #     return analysis
+
+    canopy_bbox = features['canopy']['bbox']
+    canopy_width = canopy_bbox[2] - canopy_bbox[0]
+    canopy_height = canopy_bbox[3] - canopy_bbox[1]
+
+    thresholds = indicator['tree_proportions']['relative_to_image']
+
+    # For Width
+    if canopy_width / image_width < thresholds["small_threshold"]:
+        analysis.append({
+            "trait": "ביטחון עצמי - רוחב",
+            "description": thresholds["interpretation"]["small"],
+            "indicator": "חופה צרה מאוד"
+        })
+    elif canopy_width / image_width > thresholds["large_threshold"]:
+        analysis.append({
+            "trait": "ביטחון עצמי - רוחב",
+            "description": thresholds["interpretation"]["large"],
+            "indicator": "חופה רחבה מאוד"
+        })
+
+    # For Height
+    if canopy_height / image_height < thresholds["small_threshold"]:
+        analysis.append({
+            "trait": "ביטחון עצמי - גובה",
+            "description": thresholds["interpretation"]["small"],
+            "indicator": "חופה נמוכה מאוד"
+        })
+    elif canopy_height / image_height > thresholds["large_threshold"]:
+        analysis.append({
+            "trait": "ביטחון עצמי - גובה",
+            "description": thresholds["interpretation"]["large"],
+            "indicator": "חופה גבוהה מאוד"
+        })
 
     return analysis
 
@@ -295,10 +420,12 @@ def generate_personality_output(features, image_width, image_height, indicator):
     # Step 4: Analyze shapes
     shape_analysis = analyze_tree_shapes(features, indicator)
 
+    #individual_analysis = analyze_tree_size_individual(features, image_width, image_height, indicator)
+
     # Combine all insights
     all_analysis = proportion_analysis + feature_analysis + location_analysis + shape_analysis
 
     # Format the results as a readable output
-    return "\n".join(
-        [f"{item['trait']}: {item['description']} (Indicator: {item['indicator']})" for item in all_analysis]
+    return "\n\n".join(
+        [f"{item['trait']}: {item['description']}" for item in all_analysis]
     )

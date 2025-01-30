@@ -47,7 +47,7 @@ def run_yolo_on_image(image_path):
 
 
 # Path to your input image
-image_path = "C:\\Users\\User\Desktop\WhatsApp Image 2025-01-21 at 16.03.02_2016a8d6.jpg"
+image_path = r"C:\Users\User\Desktop\WhatsApp_Image_2025-01-30_at_13.50.19_da6dec74.jpg"
 # Step 1: Run YOLO on the real image
 yolo_output, image_width, image_height = run_yolo_on_image(image_path)
 

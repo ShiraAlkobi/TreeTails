@@ -406,11 +406,20 @@
     border-radius: 18px;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    font-size: 22px;
+    text-align: right;
+    direction: "rtl";
+    font-size: 23px;
+    font-family: "Rubik", serif;
     color: #686868;
     top: 850px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+.output-box pre {
+  white-space: pre-wrap;
+  font-family: "Rubik", serif;
+  padding: 10px;
+  margin:10px;
 }
 
 /**********************************************************************************************************************************************************/
