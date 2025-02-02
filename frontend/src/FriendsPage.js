@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useAppContext } from './AppContext';  // import the custom hook
 import Header from "./components/Header";
 import ImageDisplay from "./components/ImageDisplay";
 import VotersToggle from "./components/VotersToggle";
@@ -7,7 +8,7 @@ import "./styles/FriendsPage.css";
 
 const FriendsPage = () => {
     const [currentVoter, setCurrentVoter] = useState(0);
-
+    const { image, response } = useAppContext();  // Destructure the saved image and response
     // Analysis points
     const analysisPoints = ["Confidence", "Stability", "Creativity"];
     const voterRatings = [
@@ -35,7 +36,7 @@ const FriendsPage = () => {
             </div>
 
         
-            <ImageDisplay />
+            <ImageDisplay image={image} response={response} /> {/* Pass the saved image and response */}
             <VotersToggle currentVoter={currentVoter} setCurrentVoter={setCurrentVoter} />
             <VotingTable analysisPoints={analysisPoints} ratings={voterRatings[currentVoter]} />
             <footer className="footer">

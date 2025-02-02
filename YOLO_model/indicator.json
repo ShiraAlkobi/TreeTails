@@ -28,8 +28,8 @@
   },
   "tree_location": {
     "horizontal_position": {
-      "left_threshold": 0.3,
-      "right_threshold": 0.7,
+      "left_threshold": 0.25,
+      "right_threshold": 0.75,
       "center_1_threshold": 0.45,
       "center_2_threshold": 0.55,
       "interpretation": {
@@ -39,8 +39,8 @@
       }
     },
     "vertical_position": {
-      "low_threshold": 0.3,
-      "high_threshold": 0.7,
+      "low_threshold": 0.25,
+      "high_threshold": 0.75,
       "center_1_threshold": 0.45,
       "center_2_threshold": 0.55,
       "interpretation": {
@@ -71,7 +71,7 @@
     }
   },
   "roots": {
-    "depth": {
+    "shape": {
       "shallow_threshold": 0.1,
       "deep_threshold": 0.3,
       "interpretation": {

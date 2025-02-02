@@ -1,18 +1,16 @@
 import React from "react";
 import "../styles/FriendsPage.css";
 
-const ImageDisplay = () => {
+const ImageDisplay = ({ image, response }) => {
     return (
         <div className="image-display-container">
-            <img src="path/to/image.jpg" alt="Analyzed" className="analyzed-image" />
-            <div className="analysis-summary">
-                <h3>Analysis Summary</h3>
-                <ul>
-                    <li>Confidence: High</li>
-                    <li>Stability: Medium</li>
-                    <li>Creativity: Excellent</li>
-                </ul>
-            </div>
+            {image && <img src={URL.createObjectURL(image)} alt="Uploaded" className="analyzed-image" />}  {/* Display the saved image */}
+            {response && (
+                <div className="analysis-summary">
+                    <h3>סיכום הניתוח:</h3>
+                    <p>{response[1]}</p>  {/* Display the saved response */}
+                </div>
+            )}
         </div>
     );
 };

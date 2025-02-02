@@ -24,6 +24,9 @@
     height: 90px;
     background-color: #4c956c;
     padding: 10px 20px; /* Adjust padding for better spacing */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top:0;
 }
 
 .logo {
@@ -93,8 +96,8 @@
 }
 
 .options-divide{
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
     color:white;
     font-size: 40px;
     margin-top: -15px;
@@ -102,13 +105,16 @@
 
 .options-label:hover {
     transform: scale(1.1);
+    color:#686868;
 }
 
 .logo:hover {
     transform: scale(1.1);
   }
 
-/**********************************************************************************************************************************************************/
+
+/*************************************************************************************************************************************************************/
+
 .image-header-container {
     display: flex;
     flex-direction: column; /* Stack headers vertically */
@@ -175,7 +181,7 @@
     animation: none; /* Stop pulsing when hovered */
 }
 
-/**********************************************************************************************************************************************************/
+/*************************************************************************************************************************************************************/
 
 /* General Container for the Steps Section */
 .use-steps {
@@ -187,15 +193,16 @@
     width: 95%;
     height: 50vh;
     border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
   }
-  
+
   /* Title of the section */
   .use-steps h2 {
     font-size: 25px;
     color: #333;
     font-family: "Noto Sans Hebrew", serif;
   }
-  
+
   /* Flexbox container for the circles (steps) */
   .steps-container {
     display: flex;
@@ -205,7 +212,7 @@
     transform: translateY(50px);
     margin-top: -40px;
   }
-  
+
   /* Individual Circle (Step) */
   .step {
     display: flex;
@@ -217,11 +224,11 @@
     width: 150px;  /* Control the width of each step */
     text-align: center;
   }
-  
+
   .step:hover {
     transform: scale(1.1);
   }
-  
+
   /* Icon inside the circle */
   .step-icon {
     width: 100px;
@@ -240,7 +247,7 @@
         max-width: 100px;
         max-height: 100px;
     }
-  
+
   /* Description above the circle */
   .step-label {
     color: #333;
@@ -257,7 +264,7 @@
     text-align: center;
     font-family: "Rubik", serif;
   }
-  
+
   /* Mobile Responsiveness */
   @media (max-width: 100%) {
     .steps-container {
@@ -265,9 +272,9 @@
       align-items: center;
     }
   }
-  
 
-/**********************************************************************************************************************************************************/
+
+/*************************************************************************************************************************************************************/
 
 /* Main content - Flexbox to arrange sections */
 .content {
@@ -278,7 +285,9 @@
     margin: 70px ; /* Centers the section */
     background-color:#d3af8e;
     border-radius: 10px;
-    height: 580px;
+    font-family: "Rubik", serif;
+    height: 650px;
+    position: relative; /* Allow absolute positioning of the Share button */
 }
 
 /* Upload Section */
@@ -314,16 +323,6 @@
 
 /* Remove Image Button */
 .remove-button {
-    /* padding: 8px 15px;
-    background-color: #ff4d4d;
-    color: white;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 10px;
-    border: none;
-    width: 20px;
-    height: 20px; */
     background: none;
     border: none;
     cursor: pointer;
@@ -345,7 +344,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-    border: 2px dashed #aaa;
+    border: 2px dashed #888888;
     overflow: hidden;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
@@ -404,25 +403,124 @@
     background-color: white;
     border: 5px solid #d68c45;
     border-radius: 18px;
-    align-items: center;
+    align-items:center;
     justify-content: center;
     text-align: right;
-    direction: "rtl";
-    font-size: 23px;
-    font-family: "Rubik", serif;
-    color: #686868;
     top: 850px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
 
-.output-box pre {
-  white-space: pre-wrap;
-  font-family: "Rubik", serif;
-  padding: 10px;
-  margin:10px;
+.output-box-text{
+    margin: 5%;
+    font-size: 22px;
+    color: #686868;
+    white-space: pre-line; /* Preserve spaces and new lines */
+    word-wrap: break-word; /* Ensure long words break if needed */
 }
 
-/**********************************************************************************************************************************************************/
+
+/* Share button */
+.share-button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    position: absolute; /* Position the button relative to the .content container */
+    bottom: 20px; /* Place the button 20px from the bottom of the container */
+    left: 50%; /* Horizontally center the button */
+    transform: translateX(-50%); /* Adjust the centering */
+    width: auto; /* Let the button width adjust to its content */
+}
+
+.share-button:hover {
+    background-color: #45a049;
+}
+
+/* Pop-up Container */
+.popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6); /* Blurry background */
+    z-index: 999;
+}
+
+/* Pop-up Content */
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+}
+
+.popup-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Button Styles */
+.whatsapp-button, .download-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #24d766; /* WhatsApp green */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.download-button {
+    background-color: #4CAF50;
+}
+
+/* Close Button */
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+/* Image Preview */
+.image-preview {
+    border: 2px solid #000;
+    width: 100%;
+    height: 300px;
+}
+
+/* Overlay for the blurry background */
+.popup-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.popup-icons{
+    width: 30px;
+    height: 30px;
+}
+
+/*************************************************************************************************************************************************************/
 
 .floating-container {
     position: fixed;
@@ -474,7 +572,7 @@
     100% { opacity: 0; }
 }
 
-/**********************************************************************************************************************************************************/
+/*************************************************************************************************************************************************************/
 
 .footer {
     width: 100%;
@@ -487,7 +585,4 @@
     margin-top: 50px; /* Adds space between content and footer */
 }
 
-/**********************************************************************************************************************************************************/
-
-
-
+/*************************************************************************************************************************************************************/

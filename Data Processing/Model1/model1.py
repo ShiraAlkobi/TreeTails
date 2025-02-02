@@ -94,11 +94,7 @@ def create_model():
     class_output = layers.Reshape((3, num_classes), name='class_output_reshape')(class_output)  # Reshape to (3, num_classes)
 
     model = models.Model(inputs=base_model.input, outputs=[bbox_output, class_output])
-    # model.compile(
-    #     optimizer='adam',
-    #     loss=masked_sparse_categorical_crossentropy,
-    #     metrics=['accuracy']
-    # )
+
     model.compile(
         optimizer='adam',
         loss={

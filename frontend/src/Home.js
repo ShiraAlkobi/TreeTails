@@ -2,8 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Content from "./components/Content";
-import ImageUploader from "./components/ImageUploader";
-import OutputBox from "./components/OutputBox";
 import UseSteps from "./components/UseSteps";
 import "./styles/Home.css";
 

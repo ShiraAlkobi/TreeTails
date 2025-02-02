@@ -4,7 +4,13 @@ import "../styles/Home.css";
 const OutputBox = ({ response }) => {
   return (
     <div className="output-box">
-      {response ? <pre>{response}</pre> : <pre>מחכים לראות מי אתה</pre>}
+      {response ?
+        <div className="output-box-text">
+            {response}
+        </div>
+       : <div className="output-box-text">
+        מודל הקסם שלנו מחכה לך, תוצאות הניתוח יופיעו כאן
+        </div>}
     </div>
   );
 };

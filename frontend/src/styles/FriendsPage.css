@@ -9,6 +9,7 @@
     background: radial-gradient(circle at 20% 40%, rgba(200, 200, 200, 0.3) 10%, transparent 80%),
             radial-gradient(circle at 80% 60%, rgba(193, 152, 139, 0.2) 15%, transparent 85%),
             white;
+    overflow: hidden; /* Prevents shapes from causing scrollbars */
 }
 
 .header-container {
@@ -30,7 +31,7 @@
     font-family: "Rubik Doodle Shadow", serif;
     font-weight: 400;
     font-style: normal;
-    margin-top: -40px;
+    margin-top: -30px;
     direction: rtl; /* Right-to-left text */
 }
 
@@ -80,6 +81,9 @@
     padding: 15px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    direction: rtl ;
+    white-space: pre-line; /* Preserve spaces and new lines */
+    word-wrap: break-word; /* Ensure long words break if needed */
 }
 /**********************************************************************************************************************************************************/
 .voters-toggle {
@@ -142,12 +146,15 @@
 table {
     width: 100%;
     border-collapse: collapse;
+   
 }
 
 td {
     text-align: center;
     padding: 10px;
     border: 1px solid #000000;
+    font-size: 20px;
+    border-radius: 10%;
 }
 
 th {

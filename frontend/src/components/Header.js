@@ -30,10 +30,6 @@ const Header = () => {
           >
             <h1 className="options-label">About Us</h1>
         </div>
-
-        <div className="options-divide">
-          |
-        </div>
       </div>
       
     </header>

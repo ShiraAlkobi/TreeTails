@@ -2,7 +2,8 @@ from ultralytics import YOLO
 import cv2
 from YOLO_model import analyze_ouput
 # Load the YOLOv8 model
-model = YOLO("C:\\Users\\User\PycharmProjects\TreeTailsModel\YOLO_model\\tree_features\yolov8_training15\weights\\best.pt")  # Replace with your trained YOLOv8 model path
+# model = YOLO("C:\\Users\\User\PycharmProjects\TreeTailsModel\YOLO_model\\tree_features\yolov8_training15\weights\\best.pt")  # Replace with your trained YOLOv8 model path
+model = YOLO(r"C:\Users\shira\PycharmProjects\TreeTails\YOLO_model\tree_features\yolov8_training15\weights\best.pt")  # Replace with your trained YOLOv8 model path
 
 import json
 
@@ -47,29 +48,31 @@ def run_yolo_on_image(image_path):
 
 
 # Path to your input image
-image_path = r"C:\Users\User\Desktop\WhatsApp_Image_2025-01-30_at_13.50.19_da6dec74.jpg"
+# image_path = r"C:\Users\User\Desktop\WhatsApp_Image_2025-01-30_at_13.50.19_da6dec74.jpg"
+image_path = r"C:\Users\shira\Downloads\ציור נועה.jpg"
 # Step 1: Run YOLO on the real image
 yolo_output, image_width, image_height = run_yolo_on_image(image_path)
 
 # Step 2: Parse YOLO output to extract features
-features = analyze_ouput.parse_yolo_output(yolo_output, image_width, image_height)
+features = analyze_ouput.parse_yolo_output(yolo_output, image_width, image_height, indicator)
 
 # Step 3: Generate personality output
 personality_output = analyze_ouput.generate_personality_output(features, image_width, image_height,indicator)
 
 # Step 4: Display results
 print("Personality Analysis:")
-print(personality_output)
+print(personality_output[0])
+print(personality_output[1])
 
 # from ultralytics import YOLO
 # import cv2
 # import matplotlib.pyplot as plt
 #
 # # Load the trained YOLOv8 model
-# model = YOLO("C:\\Users\\User\PycharmProjects\TreeTailsModel\YOLO_model\\tree_features\yolov8_training15\weights\\best.pt")  # Update the path if needed
+# model = YOLO(r"C:\Users\shira\PycharmProjects\TreeTails\YOLO_model\tree_features\yolov8_training14\weights\best.pt")  # Update the path if needed
 #
 # # Path to the image you want to test
-# image_path = "C:\\Users\\User\Desktop\\tree_images_and_annotations\\test\images\\tree_1107_png_jpg.rf.977f90f23a25f5b76c048aab3e8dc075.jpg" # Replace with the actual image path
+# image_path = r"C:\Users\shira\Downloads\photo_2025-02-01_19-18-16.jpg" # Replace with the actual image path
 #
 # # Perform inference
 # results = model(image_path)
