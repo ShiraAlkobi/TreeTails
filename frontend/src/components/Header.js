@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "../images/logo.png"; // make sure this path is correct
-import friendsIcon from "../images/friends-zone.png"; // make sure this path is correct
+import logo from "../images/logo.png";
 
 const Header = () => {
   const navigate = useNavigate();

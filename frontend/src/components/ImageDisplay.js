@@ -8,7 +8,7 @@ const ImageDisplay = ({ image, response }) => {
             {response && (
                 <div className="analysis-summary">
                     <h3>סיכום הניתוח:</h3>
-                    <p>{response[1]}</p>  {/* Display the saved response */}
+                    <p>{response}</p>  {/* Display the saved response */}
                 </div>
             )}
         </div>

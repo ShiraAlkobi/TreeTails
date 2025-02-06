@@ -1,0 +1,92 @@
+/* 2c6e49,4c956c,fefee3,ffc9b9,d68c45 */
+
+
+/* Styling for the voting page container */
+.voting-page-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    border-radius: 8px;
+    width: 100%;
+    margin: 0 auto;
+    background: radial-gradient(circle at 20% 40%, rgba(200, 255, 200, 0.3) 10%, transparent 80%),
+            radial-gradient(circle at 80% 60%, rgba(180, 255, 180, 0.2) 15%, transparent 85%),
+            white;
+
+    overflow: hidden; /* Prevents shapes from causing scrollbars */
+}
+
+.voting-page-container h1 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #4c956c;
+}
+
+/* Table Styling */
+.voting-table {
+    width: 90%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    border: 1px solid #000000;
+}
+
+.voting-table th, .voting-table td {
+    padding: 12px;
+    text-align: center;
+    direction: rtl;
+}
+
+.voting-table th {
+    background-color: #ffffff;
+    color: #ff8863;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.voting-table td {
+    background-color: #ffffff;
+}
+
+/* Star column */
+.voting-table .star-column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.voting-table .star {
+    cursor: pointer;
+    font-size: 24px;
+    margin: 0 5px;
+    transition: color 0.3s ease;
+}
+
+.voting-table .star:hover {
+    color: #FFD700;
+}
+
+/* Color for filled stars */
+.voting-table .star:hover,
+.voting-table .star[style*="color: gold"] {
+    color: #FFD700; /* Gold for filled stars */
+}
+
+/* Save button */
+.save-button {
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 150px;
+    margin: 20px auto;
+    display: block;
+}
+
+.save-button:hover {
+    background-color: #218838;
+}

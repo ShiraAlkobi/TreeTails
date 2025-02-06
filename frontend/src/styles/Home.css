@@ -25,8 +25,6 @@
     background-color: #4c956c;
     padding: 10px 20px; /* Adjust padding for better spacing */
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    position: sticky;
-    top:0;
 }
 
 .logo {

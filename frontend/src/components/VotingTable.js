@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../styles/FriendsPage.css";
 
-const VotingTable = ({ analysisPoints, ratings }) => {
-
+const VotingTable = ({ ratings, response }) => {
+   
     // Function to generate star ratings
     const renderStars = (rating) => {
         const maxStars = 5;
@@ -12,6 +12,13 @@ const VotingTable = ({ analysisPoints, ratings }) => {
             </span>
         );
     };
+
+    // Function to split the response into lines
+    const splitResponseIntoLines = (responseText) => {
+        return responseText.split("\n\n").map((line, index) => ({ id: index, line }));
+    };
+
+    const parsedResponse = splitResponseIntoLines(response);
 
     return (
         <div className="voting-table-container">
@@ -23,10 +30,11 @@ const VotingTable = ({ analysisPoints, ratings }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {analysisPoints.map((point, index) => (
-                        <tr key={index}>
-                            <td>{point}</td>
-                            <td>{renderStars(ratings[index])}</td>
+                    {/* Iterate over the parsed response and display each line */}
+                    {parsedResponse.map((item) => (
+                        <tr key={item.id}>
+                            <td>{item.line}</td>
+                            <td>{renderStars(ratings[item.id])}</td>
                         </tr>
                     ))}
                 </tbody>
@@ -36,3 +44,4 @@ const VotingTable = ({ analysisPoints, ratings }) => {
 };
 
 export default VotingTable;
+
